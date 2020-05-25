@@ -24,6 +24,26 @@ The solutions covers the exercises with the following titles.
 * 字符串加解密
 * 蛇形矩阵
 * 迷宫问题
+* 字符串合并处理
+* 求小球落地5次后所经历的路程和第5次反弹的高度
+* 名字的漂亮度
+* 按字节截取字符串
+* 线性插值
+* 学英语
+* 称砝码
+* 四则运算，表达式求值
+* 字符串是另一个字符串的子串
+* 将真分数分解为埃及分数
+* 二维数组操作
+* 字符串中的变量替换
+* 挑7
+* 员工投票，选明日之星
+* 高精度的整数加法
+* 输入n个整数，输出其中最小的k个
+* 字符串不同的排列数，兄弟单词
+* 排列组合公式
+* 有向图是否有环
+* 逻辑运算符
 
 ## Prerequisites
 The following instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
@@ -34,6 +54,7 @@ Python 3 is used when this project is constructed. This project requires the fol
   * unittest
   * json
   * datetime
+  * networkx
   
 Python 3 can be acquired at the [official website](https://www.python.org/), download page. 
  To check which packages have already been installed in your python 3 environment, you can run the following command in your

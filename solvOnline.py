@@ -2,6 +2,7 @@ import utilities as util
 import mySolPack
 import unittest
 import sys
+from mySub.findCycleInDirectedGraph import Graph
 import math
 
 class myUnitTestSet(unittest.TestCase):
@@ -307,6 +308,24 @@ class myUnitTestSet(unittest.TestCase):
 
     @unittest.skip("thought output should be all upper case, confusing. one case passed")
     def testCombiStrs(self):
+        # 字符串合并处理
+        '''
+         详细描述：
+
+        将输入的两个字符串合并。
+
+        对合并后的字符串进行排序，要求为：下标为奇数的字符和下标为偶数的字符分别从小到大排序。这里的下标意思是字符在字符串中的位置。
+
+        对排序后的字符串进行操作，如果字符为‘0’——‘9’或者‘A’——‘F’或者‘a’——‘f’，则对他们所代表的16进制的数进行BIT倒序的操作，并
+        转换为相应的大写字符。如字符为‘4’，为0100b，则翻转后为0010b，也就是2。转换后的字符为‘2’； 如字符为‘7’，为0111b，则翻转
+        后为1110b，也就是e。转换后的字符为大写‘E’。
+        in:
+        dec fab
+
+        :return:
+        5D37BF
+
+        '''
         while True:
             try:
                 line = input()
@@ -325,6 +344,22 @@ class myUnitTestSet(unittest.TestCase):
     @unittest.skip("passed")
     def testSnakeLayout(self):
         # 蛇形矩阵
+        '''
+        蛇形矩阵是由1开始的自然数依次排列成的一个矩阵上三角形。
+        样例输入/input
+        5
+        样例输出/output
+
+        1 3 6 10 15
+
+        2 5 9 14
+
+        4 8 13
+
+        7 12
+
+        11
+        '''
         while True:
             try:
                 n = int(input())
@@ -346,7 +381,8 @@ class myUnitTestSet(unittest.TestCase):
                 break
 
     @unittest.skip("passed")
-    def testBouncing(self):
+    def testBallBouncing(self):
+        # 求小球落地5次后所经历的路程和第5次反弹的高度
         while True:
             try:
                 init_h = int(input())
@@ -378,6 +414,7 @@ class myUnitTestSet(unittest.TestCase):
 
     @unittest.skip("passed")
     def testCalcCombi(self):
+        # 名字的漂亮度
         while True:
             try:
                 num_of_names = int(input())
@@ -391,6 +428,7 @@ class myUnitTestSet(unittest.TestCase):
 
     @unittest.skip("passed")
     def testCutTextSpecDigits(self):
+        # 按字节截取字符串
         while True:
             try:
                 a, n = input().split()
@@ -404,6 +442,7 @@ class myUnitTestSet(unittest.TestCase):
 
     @unittest.skip("skipped, need debugging for large input")
     def testlinearInterpolation(self):
+        # 线性插值
         while True:
             try:
                 ind_m, ind_n = [int(i) for i in input().split()]
@@ -427,6 +466,7 @@ class myUnitTestSet(unittest.TestCase):
 
     @unittest.skip("passed")
     def testReadEnglishNumber(self):
+        # 学英语
         while True:
             try:
                 num_to_read = int(input())
@@ -436,6 +476,7 @@ class myUnitTestSet(unittest.TestCase):
 
     @unittest.skip("passed")
     def testWeightList(self):
+        # 称砝码
         while True:
             try:
                 n = int(input())
@@ -451,6 +492,7 @@ class myUnitTestSet(unittest.TestCase):
 
     @unittest.skip("passed")
     def testCalcFundOperations(self):
+        # 四则运算，表达式求值
         a = input()
         a = a.replace("{", "(")
         a = a.replace("}", ")")
@@ -461,6 +503,7 @@ class myUnitTestSet(unittest.TestCase):
 
     @unittest.skip("passed")
     def testStringReplace(self):
+        # 字符串是另一个字符串的子串
         while True:
             try:
                 short_str = input()
@@ -480,6 +523,7 @@ class myUnitTestSet(unittest.TestCase):
 
     @unittest.skip("passed")
     def testFractionDecompose(self):
+        # 将真分数分解为埃及分数
         while True:
             try:
                 up, down = util.fractionSplit(input())
@@ -489,6 +533,7 @@ class myUnitTestSet(unittest.TestCase):
 
     @unittest.skip("passed")
     def testCheckMatOverFlowAndOps(self):
+        # 二维数组操作
         while True:
             try:
                 r, c = list(map(int, sys.stdin.readline().strip().split()))
@@ -531,6 +576,21 @@ class myUnitTestSet(unittest.TestCase):
 
     @unittest.skip("passed")
     def testReplaceStr(self):
+		# 字符串中的变量替换
+        '''
+        输入一组数量为n的字符串，格式是“字符串名 = 字符串值”，字符串值中可能包含
+        "&{字符串名}“的子串，需要用同一字符串名的字符串值来替换。最后输出内容是输入数据最后一行所有”&{串名}"
+        被替换后的串值。
+
+        输入数据
+        xxx = sss / ooo / & {ttt} / uuu
+        ttt = www
+        eee = jjj
+        yyy = ggg / ppp / & {xxx} / ttt / & {eee}
+
+        输出数据
+        ggg / ppp / sss / ooo / www / uuu / ttt / jjj
+        '''
         while True:
             try:
                 line_num = int(input())
@@ -547,7 +607,6 @@ class myUnitTestSet(unittest.TestCase):
                 for it in tb_replaced:
                     final_str += " {} /".format(it)
                 print(line_tbr[0] + "="+ final_str[:-1])
-
             except:
                 break
 
@@ -606,6 +665,18 @@ class myUnitTestSet(unittest.TestCase):
 
     @unittest.skip("passed")
     def testfind7relatedInNumSet(self):
+        # 挑7
+        '''
+         输出7有关数字的个数，包括7的倍数，还有包含7的数字（如17，27，37...70，71，72，73...）的个数（一组测试用例里可能有多组数据，请注意处理）
+        输入描述:
+        一个正整数N。(N不大于30000)
+        输出描述:
+        不大于N的与7有关的数字个数，例如输入20，与7有关的数字包括7,14,17.
+        in:
+        20
+        :return:
+        3
+        '''
         while True:
             try:
                 top_int = int(input())
@@ -615,6 +686,13 @@ class myUnitTestSet(unittest.TestCase):
 
     @unittest.skip("passed")
     def testNamesVotesSort(self):
+        # 员工投票，选明日之星
+        '''
+        input:
+        Lucy,Tom,Jerry,Lucy,Tom,Tom,Tommy,Tommy
+        output:
+        Tom
+        '''
         while True:
             try:
                 line = input()
@@ -626,6 +704,16 @@ class myUnitTestSet(unittest.TestCase):
                 break
     @unittest.skip("passed")
     def testSummationLongInt(self):
+        # 高精度的整数加法
+        '''
+        请设计一个算法完成两个超长正整数的加法。
+        接口说明
+        input:
+        9876543210
+        1234567890
+        output:
+        11111111100
+        '''
         while True:
             try:
                 str1 = input()
@@ -635,8 +723,22 @@ class myUnitTestSet(unittest.TestCase):
                 print(int(str1) + int(str2))
             except:
                 break
+
     @unittest.skip("passed")
     def testGetSmallestKNums(self):
+        # 输入n个整数，输出其中最小的k个。
+        '''
+        in:
+        n k
+        n integers
+        out:
+        smallest k numbers
+        input:
+        5 2
+        1 3 5 7 2
+        output:
+        1 2
+        '''
         while True:
             try:
                 total_num, k = [int(it) for it in input().split()]
@@ -649,19 +751,9 @@ class myUnitTestSet(unittest.TestCase):
             except:
                 break
 
-    @unittest.skip("on hold")
-    def testDrawPts(self):
-        while True:
-            try:
-                total_num = int(input())
-                list_pts = []
-                for i in range(total_num):
-                    list_pts.append(list(map(int, input().split())))
-                print(list_pts)
-            except:
-                break
     @unittest.skip("passed")
-    def testCalcCombiNumFromListStr(self):
+    def testCalcPermutationNumFromListStr(self):
+        # 字符串不同的排列数，兄弟单词
         while True:
             try:
                 in_str = input()
@@ -677,6 +769,7 @@ class myUnitTestSet(unittest.TestCase):
 
     @unittest.skip("passed")
     def testCombiAndPermutationFormula(self):
+        # 排列组合公式
         while True:
             try:
                 innum = tuple(map(int, input().split()))
@@ -686,6 +779,13 @@ class myUnitTestSet(unittest.TestCase):
 
     @unittest.skip("passed")
     def testFindCyclesInGraph(self):
+        # 有向图是否有环
+        '''
+        input:
+        A->B,B->C,C->D,E->A
+        output:
+        Graph is cyclic in nature
+        '''
         while True:
             try:
                 in_str = input().split(";")
@@ -713,6 +813,7 @@ class myUnitTestSet(unittest.TestCase):
 
     @unittest.skip("passed")
     def testCalcLogic(self):
+        # 逻辑运算符
         while True:
             try:
                 in_str_ls = sys.stdin.readline().strip().split()
