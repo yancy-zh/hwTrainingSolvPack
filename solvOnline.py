@@ -29,6 +29,21 @@ class myUnitTestSet(unittest.TestCase):
     @unittest.skip("passed")
     def testSplitStringPer8(self):
         # 字符串分隔
+        '''
+         •连续输入字符串，请按长度为8拆分每个字符串后输出到新的字符串数组；
+        •长度不是8整数倍的字符串请在后面补数字0，空字符串不处理。
+        输入描述:
+        连续输入字符串(输入2次,每个字符串长度小于100)
+        输出描述:
+        输出到长度为8的新字符串数组
+        input:
+        abc
+        123456789
+        output:
+        abc00000
+        12345678
+        90000000
+        '''
         while True:
             try:
                 strIn = input()
@@ -42,6 +57,17 @@ class myUnitTestSet(unittest.TestCase):
     @unittest.skip("passed")
     def testcvtBase16(self):
         # 进制转换
+        '''
+         写出一个程序，接受一个十六进制的数，输出该数值的十进制表示。（多组同时输入 ）
+        输入描述:
+        输入一个十六进制的数值字符串。
+        输出描述:
+        输出该数值的十进制字符串。
+        input:
+        0xA
+        output:
+        10
+        '''
         while True:
             try:
                 strIn = input()
@@ -52,6 +78,18 @@ class myUnitTestSet(unittest.TestCase):
     @unittest.skip("passed")
     def testCalcPrimeNum(self):
         # 质数因子
+        '''
+         功能:输入一个正整数，按照从小到大的顺序输出它的所有质因子（重复的也要列举）（如180的质因子为2 2 3 3 5 ）
+        最后一个数后面也要有空格
+        输入描述:
+        输入一个long型整数
+        输出描述:
+        按照从小到大的顺序输出它的所有质数的因子，以空格隔开。最后一个数后面也要有空格。
+        input:
+        180
+        output:
+        2 2 3 3 5
+        '''
         while True:
             try:
                 util.printArrWSep(mySolPack.calcPrimeNum(int(input())))
@@ -61,11 +99,29 @@ class myUnitTestSet(unittest.TestCase):
     @unittest.skip("passed")
     def testCalNumOfDiffChar(self):
         # 字符个数统计
+        '''
+        编写一个函数，计算字符串中含有的不同字符的个数。字符在ACSII码范围内(0~127)，换行表示结束符，不算在字符里。不在范围内的不作统计。注意是不同的字符
+        输入描述:
+        输入N个字符，字符在ACSII码范围内。
+        输出描述:
+        输出范围在(0~127)字符的个数。
+        input:
+        abc
+        output:
+        3
+        '''
         print(mySolPack.calNumOfDiffChar(input()))
 
     @unittest.skip("passed")
     def testRevertStr(self):
         # 字符串反转
+        '''
+        写出一个程序，接受一个字符串，然后输出该字符串反转后的字符串。（字符串长度不超过1000）
+        输入描述:
+        输入N个字符
+        输出描述:
+        输出该字符串反转后的字符串
+        '''
         print(mySolPack.reverseStr(input()))
 
     @unittest.skip("passed")
@@ -576,7 +632,6 @@ class myUnitTestSet(unittest.TestCase):
 
     @unittest.skip("passed")
     def testReplaceStr(self):
-		# 字符串中的变量替换
         '''
         输入一组数量为n的字符串，格式是“字符串名 = 字符串值”，字符串值中可能包含
         "&{字符串名}“的子串，需要用同一字符串名的字符串值来替换。最后输出内容是输入数据最后一行所有”&{串名}"
@@ -753,7 +808,7 @@ class myUnitTestSet(unittest.TestCase):
 
     @unittest.skip("passed")
     def testCalcPermutationNumFromListStr(self):
-        # 字符串不同的排列数，兄弟单词
+        # 字符串不同的排列数
         while True:
             try:
                 in_str = input()
@@ -836,7 +891,7 @@ class myUnitTestSet(unittest.TestCase):
             except:
                 break
 
-    @unittest.skip("passed")
+    # @unittest.skip("passed")
     def testSortStrs(self):
         while True:
             try:
@@ -846,18 +901,16 @@ class myUnitTestSet(unittest.TestCase):
                     break
                 if inlist == [] or "":
                     break
-                dict_str = {}
-                for it in inlist:
-                    dict_str[it] = ord(it[-1])
-                sorted_dict = {k: v for k, v in sorted(dict_str.items(), key=lambda item: item[1], reverse=True)}
+                sorted_ls = sorted(inlist, key=lambda it: it[-1], reverse = True)
                 final_str = ""
-                for it in sorted_dict.items():
-                    final_str += "," + it[0]
+                for it in sorted_ls:
+                    final_str += "," + it
                 print(final_str[1:])
             except:
                 break
 
-    # @unittest.skip("on hld")
+
+    @unittest.skip("on hld")
     def testFormulaMinVal(self):
         while True:
             try:
@@ -873,6 +926,20 @@ class myUnitTestSet(unittest.TestCase):
                 print(val)
             except:
                 break
+    @unittest.skip("on hld")
+    def testPrimeNumPairs(self):
+        while True:
+            try:
+                num = int(input())
+                if num % 2 != 0:
+                    print("num is not a even num")
+                    break
+                int_list =[int(it.strip()) for it in input().split()]
+                pairs = []
+                mySolPack.getPrimePairs(int_list)
+                print(pairs)
 
+            except:
+                break
 if __name__ == "__main__":
     unittest.main()
