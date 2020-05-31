@@ -127,6 +127,12 @@ class myUnitTestSet(unittest.TestCase):
     @unittest.skip("passed")
     def testSortedList(self):
         # 单词排序
+        '''
+        input:
+        输入一行以空格来分隔的句子
+        output:
+        按字母表顺序排序
+        '''
         while True:
             try:
                 num_of_words = int(input())
@@ -140,6 +146,17 @@ class myUnitTestSet(unittest.TestCase):
     @unittest.skip("passed")
     def testIntegerStoreSpace(self):
         # int型正整数在内存中存储时1的个数
+        '''
+        输入一个int型的正整数，计算出该int型数据在内存中存储时1的个数。
+        输入描述:
+        输入一个整数（int类型）
+        输出描述:
+        这个数转换成2进制后，输出1的个数
+        input:
+        5
+        out:
+        2
+        '''
         outNum = 0
         inNum = int(input())
         while inNum > 1:
@@ -150,6 +167,18 @@ class myUnitTestSet(unittest.TestCase):
     @unittest.skip("gave up")
     def testshoppingList(self):
         # 购物单
+        '''
+        输入的第 1 行，为两个正整数，用一个空格隔开：N m
+        （其中 N （ <32000 ）表示总钱数， m （ <60 ）为希望购买物品的个数。）
+        从第 2 行到第 m+1 行，第 j 行给出了编号为 j-1 的物品的基本数据，每行有 3 个非负整数 v p q
+        （其中 v 表示该物品的价格（ v<10000 ）， p 表示该物品的重要度（ 1 ~ 5 ）， q 表示该物品是主件还是附件。如果 q=0 ，表示该物品为主件，如果 q>0 ，表示该物品为附件， q 是所属主件的编号）
+        1000 5
+        800 2 0
+        400 5 1
+        300 5 1
+        400 3 0
+        500 2 0
+        '''
         budget, num_of_items = [int(it) for it in input().split()]
         goods = []
         for i in range(num_of_items):
@@ -159,6 +188,31 @@ class myUnitTestSet(unittest.TestCase):
     @unittest.skip("passed")
     def testMovCoord(self):
         # 坐标移动
+        '''
+         开发一个坐标计算工具， A表示向左移动，D表示向右移动，W表示向上移动，S表示向下移动。从（0,0）点开始移动，从输入字符串里面读取一些坐标，并将最终输入结果输出到输出文件里面。
+        输入：
+        合法坐标为A(或者D或者W或者S) + 数字（两位以内）
+        坐标之间以;分隔。
+        非法坐标点需要进行丢弃。如AA10;  A1A;  $%$;  YAD; 等。
+        下面是一个简单的例子 如：
+        A10;S20;W10;D30;X;A1A;B10A11;;A10;
+        处理过程：
+        起点（0,0）
+        +   A10   =  （-10,0）
+        +   S20   =  (-10,-20)
+        +   W10  =  (-10,-10)
+        +   D30  =  (20,-10)
+        +   x    =  无效
+        +   A1A   =  无效
+        +   B10A11   =  无效
+        +  一个空 不影响
+        +   A10  =  (10,-10)
+        结果 （10， -10）
+        input:
+        A10;S20;W10;D30;X;A1A;B10A11;;A10;
+        output:
+        10,-10
+        '''
         curr_coor = [0, 0]
         while True:
             try:
@@ -175,6 +229,15 @@ class myUnitTestSet(unittest.TestCase):
     @unittest.skip("passed")
     def testIPCategorize(self):
         # 识别有效的IP地址和掩码并进行分类统计
+        '''
+        请解析IP地址和对应的掩码，进行分类识别。要求按照A/B/C/D/E类地址归类，不合法的地址和掩码单独归类。  所有的IP地址划分为 A,B,C,D,E
+        五类  A类地址1.0.0.0~126.255.255.255;  B类地址128.0.0.0~191.255.255.255;  C类地址192.0.0.0~223.255.255.255;  D类地址
+        224.0.0.0~239.255.255.255；  E类地址240.0.0.0~255.255.255.255   私网IP范围是：  10.0.0.0～10.255.255.255  172.16.0.0～172.31.255.255
+         192.168.0.0～192.168.255.255  子网掩码为二进制下前面是连续的1，然后全是0。（例如：255.255.255.32就是一个非法的掩码）
+         注意二进制下全是1或者全是0均为非法  注意： 1. 类似于【0.*.*.*】和【127.*.*.*】的IP地址不属于上述输入的任意一类，也不属于不合法ip地址，
+         计数时可以忽略 2. 私有IP地址和A,B,C,D,E类地址是不冲突的   输入描述:  多行字符串。每行一个IP地址和掩码，用~隔开。  输出描述:
+         统计A、B、C、D、E、错误IP地址或错误掩码、私有IP的个数，之间以空格隔开。
+        '''
         A = 0
         B = 0
         C = 0
@@ -214,6 +277,27 @@ class myUnitTestSet(unittest.TestCase):
     @unittest.skip("passed")
     def testValidPassword(self):
         # 密码验证合格程序
+        '''
+        密码要求:
+        1.长度超过8位
+        2.包括大小写字母.数字.其它符号,以上四种至少三种
+        3.不能有相同长度超2的子串重复
+        说明:长度超过2的子串
+        输入描述:
+        一组或多组长度超过2的子符串。每组占一行
+        输出描述:
+        如果符合要求输出：OK，否则输出NG
+        input:
+        021Abc9000
+        021Abc9Abc1
+        021ABC9000
+        021$bc9000
+        output:
+        OK
+        NG
+        NG
+        OK
+        '''
         while True:
             try:
                 pw_str = sys.stdin.readline().strip()
@@ -230,6 +314,20 @@ class myUnitTestSet(unittest.TestCase):
     @unittest.skip("passed")
     def testCvtPassword(self):
         # 简单密码
+        '''
+         密码是我们生活中非常重要的东东，我们的那么一点不能说的秘密就全靠它了。哇哈哈. 接下来渊子要在密码之上再加一套密码，虽然简单但也安全。
+        假设渊子原来一个BBS上的密码为zvbo9441987,为了方便记忆，他通过一种算法把这个密码变换成YUANzhi1987，这个密码是他的名字和出生年份，怎么忘都忘不了，而且可以明目张胆地放在显眼的地方而不被别人知道真正的密码。
+        他是这么变换的，大家都知道手机上的字母： 1--1， abc--2, def--3, ghi--4, jkl--5, mno--6, pqrs--7, tuv--8 wxyz--9, 0--0,就这么简单，渊子把密码中出现的小写字母都变成对应的数字，数字和其他的符号都不做变换，
+        声明：密码中没有空格，而密码中出现的大写字母则变成小写之后往后移一位，如：X，先变成小写，再往后移一位，不就是y了嘛，简单吧。记住，z往后移是a哦。
+        输入描述:
+        输入包括多个测试数据。输入是一个明文，密码长度不超过100个字符，输入直到文件结尾
+        输出描述:
+        输出渊子真正的密文
+        input:
+        YUANzhi1987
+        output:
+        zvbo9441987
+        '''
         while True:
             real_pw = []
             try:
@@ -250,6 +348,22 @@ class myUnitTestSet(unittest.TestCase):
     @unittest.skip("passed")
     def testBottleExchgDrink(self):
         # 汽水瓶
+        '''
+         有这样一道智力题：“某商店规定：三个空汽水瓶可以换一瓶汽水。小张手上有十个空汽水瓶，她最多可以换多少瓶汽水喝？”答案是5瓶，方法如下：先用9个空瓶子换3瓶汽水，喝掉3瓶满的，喝完以后4个空瓶子，用3个再换一瓶，喝掉这瓶满的，这时候剩2个空瓶子。然后你让老板先借给你一瓶汽水，喝掉这瓶满的，喝完以后用3个空瓶子换一瓶满的还给老板。如果小张手上有n个空汽水瓶，最多可以换多少瓶汽水喝？
+        输入描述:
+        输入文件最多包含10组测试数据，每个数据占一行，仅包含一个正整数n（1<=n<=100），表示小张手上的空汽水瓶数。n=0表示输入结束，你的程序不应当处理这一行。
+        输出描述:
+        对于每组测试数据，输出一行，表示最多可以喝的汽水瓶数。如果一瓶也喝不到，输出0。
+        in:
+        3
+        10
+        81
+        0
+        :return:
+        1
+        5
+        40
+        '''
         while True:
             try:
                 a = int(input())
@@ -261,6 +375,18 @@ class myUnitTestSet(unittest.TestCase):
     @unittest.skip("passed")
     def testDeleteRareChars(self):
         # 删除字符串中出现次数最少的字符
+        '''
+         实现删除字符串中出现次数最少的字符，若多个字符出现次数一样，则都删除。输出删除这些单词后的字符串，字符串中其它字符保持原来的顺序。
+        注意每个输入文件有多组输入，即多个字符串用回车隔开
+        输入描述:
+        字符串只包含小写英文字母, 不考虑非法输入，输入的字符串长度小于等于20个字节。
+        输出描述:
+        删除字符串中出现次数最少的字符后的字符串。
+        input:
+        abcdd
+        :return:
+        dd
+        '''
         try:
             while True:
                 line = sys.stdin.readline().strip()
@@ -273,6 +399,24 @@ class myUnitTestSet(unittest.TestCase):
     @unittest.skip("passed")
     def testLongestAcendingSubSet(self):
         # 合唱队
+        '''
+         计算最少出列多少位同学，使得剩下的同学排成合唱队形
+        说明：
+        N位同学站成一排，音乐老师要请其中的(N-K)位同学出列，使得剩下的K位同学排成合唱队形。
+        合唱队形是指这样的一种队形：设K位同学从左到右依次编号为1，2…，K，他们的身高分别为T1，T2，…，TK，   则他们的身高满足存在i（1<=i<=K）使得T1<T2<......<Ti-1<Ti>Ti+1>......>TK。
+        你的任务是，已知所有N位同学的身高，计算最少需要几位同学出列，可以使得剩下的同学排成合唱队形。
+        注意不允许改变队列元素的先后顺序
+        请注意处理多组输入输出！
+        输入描述:
+        整数N
+        输出描述:
+        最少需要几位同学出列
+        input:
+        8
+        186 186 150 200 160 130 197 200
+        :return:
+        4
+        '''
         while True:
             try:
                 n = int(input())
@@ -307,6 +451,19 @@ class myUnitTestSet(unittest.TestCase):
     @unittest.skip("passed")
     def testsortStringThreeRules(self):
         # 字符串排序，三个规则
+        '''
+         编写一个程序，将输入字符串中的字符按如下规则排序。
+        规则 1 ：英文字母从 A 到 Z 排列，不区分大小写。
+        如，输入： Type 输出： epTy
+        规则 2 ：同一个英文字母的大小写同时存在时，按照输入顺序排列。
+        如，输入： BabA 输出： aABb
+        规则 3 ：非英文字母的其它字符保持原来的位置。
+        如，输入： By?e 输出： Be?y
+        input:
+        A Famous Saying: Much Ado About Nothing (2012/8).
+        :return:
+        A aaAAbc dFgghh: iimM nNn oooos Sttuuuy (2012/8).
+        '''
         while True:
             try:
                 in_str = input()
@@ -319,6 +476,19 @@ class myUnitTestSet(unittest.TestCase):
     @unittest.skip("passed")
     def testAlphaDictionary(self):
         # 查找兄弟单词
+        '''
+        输入描述:
+        先输入字典中单词的个数，再输入n个单词作为字典单词。
+        输入一个单词，查找其在字典中兄弟单词的个数
+        再输入数字n
+        输出描述:
+        根据输入，输出查找到的兄弟单词的个数
+        input:
+        3 abc bca cab abc 1
+        :return:
+        2
+        bca
+        '''
         while True:
             try:
                 line = input()
@@ -343,6 +513,32 @@ class myUnitTestSet(unittest.TestCase):
     @unittest.skip("passed")
     def testEncodeAndDecode(self):
         # 字符串加解密
+        '''
+        1、对输入的字符串进行加解密，并输出。
+        2加密方法为：
+        当内容是英文字母时则用该英文字母的后一个字母替换，同时字母变换大小写,如字母a时则替换为B；字母Z时则替换为a；
+        当内容是数字时则把该数字加1，如0替换1，1替换2，9替换0；
+        其他字符不做变化。
+        3、解密方法为加密的逆过程。
+        接口描述：
+            实现接口，每个接口实现1个基本操作：
+        void Encrypt (char aucPassword[], char aucResult[])：在该函数中实现字符串加密并输出
+        说明：
+        1、字符串以\0结尾。
+        2、字符串最长100个字符。
+        int unEncrypt (char result[], char password[])：在该函数中实现字符串解密并输出
+        说明：
+        1、字符串以\0结尾。
+            2、字符串最长100个字符。
+        输入描述:
+        输入说明
+        输入一串要加密的密码
+        输入一串加过密的密码
+        输出描述:
+        输出说明
+        输出加密后的字符
+        输出解密后的字符
+        '''
         while True:
             try:
                 line1 = input()
@@ -367,20 +563,15 @@ class myUnitTestSet(unittest.TestCase):
         # 字符串合并处理
         '''
          详细描述：
-
         将输入的两个字符串合并。
-
         对合并后的字符串进行排序，要求为：下标为奇数的字符和下标为偶数的字符分别从小到大排序。这里的下标意思是字符在字符串中的位置。
-
         对排序后的字符串进行操作，如果字符为‘0’——‘9’或者‘A’——‘F’或者‘a’——‘f’，则对他们所代表的16进制的数进行BIT倒序的操作，并
         转换为相应的大写字符。如字符为‘4’，为0100b，则翻转后为0010b，也就是2。转换后的字符为‘2’； 如字符为‘7’，为0111b，则翻转
         后为1110b，也就是e。转换后的字符为大写‘E’。
         in:
         dec fab
-
         :return:
         5D37BF
-
         '''
         while True:
             try:
@@ -405,15 +596,10 @@ class myUnitTestSet(unittest.TestCase):
         样例输入/input
         5
         样例输出/output
-
         1 3 6 10 15
-
         2 5 9 14
-
         4 8 13
-
         7 12
-
         11
         '''
         while True:
