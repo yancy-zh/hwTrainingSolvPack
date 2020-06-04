@@ -1077,8 +1077,9 @@ class myUnitTestSet(unittest.TestCase):
             except:
                 break
 
-    # @unittest.skip("passed")
+    @unittest.skip("passed")
     def testSortStrs(self):
+        # sort strings by ascii code of the last digit, keep input sequence if when strings repeat
         while True:
             try:
                 in_str = input().strip()
@@ -1095,8 +1096,7 @@ class myUnitTestSet(unittest.TestCase):
             except:
                 break
 
-
-    @unittest.skip("on hld")
+    @unittest.skip("on hold")
     def testFormulaMinVal(self):
         while True:
             try:
@@ -1112,8 +1112,10 @@ class myUnitTestSet(unittest.TestCase):
                 print(val)
             except:
                 break
-    @unittest.skip("on hld")
+
+    @unittest.skip("on hold")
     def testPrimeNumPairs(self):
+        # 找所有素数伴侣
         while True:
             try:
                 num = int(input())
@@ -1122,10 +1124,74 @@ class myUnitTestSet(unittest.TestCase):
                     break
                 int_list =[int(it.strip()) for it in input().split()]
                 pairs = []
-                mySolPack.getPrimePairs(int_list)
+                util.getPrimePairs(int_list)
                 print(pairs)
 
             except:
                 break
+
+    @unittest.skip("on hold")
+    def testRevertSentence(self):
+        while True:
+            try:
+                ls_of_words = [it.strip() for it in sys.stdin.readline().strip().split()]
+                print(ls_of_words)
+
+            except:
+                break
+
+    @unittest.skip("passed")
+    def testFindCombis(self):
+        # 敲九宫格键盘产生的所有字串组合
+        # given numbers clicked on the phone 9-cell keyboards, display the possible combis of letters.
+        while True:
+            try:
+                nums = list(input())
+                arr = []
+                for num in nums:
+                    arr.append(mySolPack.cvtNum2PhoneAlphas(int(num)))
+                total_combis = list(arr[0])
+                for it in arr[1:]:
+                    combis_in_one_set = list(it)
+                    total_combis = list(set([a + b for a in total_combis for b in combis_in_one_set]))
+                util.printArr(total_combis)
+            except:
+                break
+
+    @unittest.skip("passed")
+    def testGetAvgOfNonNegNumbers(self):
+        #  记负均正
+        '''
+        # 从输入任意个整型数，统计其中的负数个数并求所有非负数的平均值，结果保留一位小数
+        # 输入描述:
+        # 输入任意个整数
+        # 输出描述:
+        # 输出负数个数以及所有非负数的平均值
+        in:
+        1 2 0 0 0 -1 -1
+        out:
+        2
+        0.6
+        '''
+        cnt_non_neg = 0
+        nums = []
+        while True:
+            try:
+                ls_nums =[int(it.strip()) for it in input().strip().split()]
+                if ls_nums == [] or "":
+                    break
+                for it in ls_nums:
+                    if it >= 0:
+                        nums.append(it)
+                    else:
+                        cnt_non_neg += 1
+            except:
+                break
+        print(cnt_non_neg)
+        if len(nums) == 0:
+            print("0.0")
+        else:
+            print("{:.1f}".format(sum(nums)/len(nums)))
+
 if __name__ == "__main__":
     unittest.main()

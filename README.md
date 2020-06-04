@@ -44,6 +44,7 @@ The solutions covers the exercises with the following titles.
 * 排列组合公式
 * 有向图是否有环
 * 逻辑运算符
+* 记负均正
 
 ## Prerequisites
 The following instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
